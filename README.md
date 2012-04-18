@@ -49,5 +49,7 @@ To deploy to Heroku:
 
 To debug on Heroku:
 >heroku logs
-or
+
+and/or
+
 >heroku run console
