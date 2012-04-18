@@ -42,7 +42,9 @@ To run locally:
 To deploy to Heroku:
 
 >heroku create --stack cedar [appname]
+
 >git push heroku master
+
 >heroku run rake db:migrate
 
 To debug on Heroku:
