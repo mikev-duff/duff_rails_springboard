@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 .idea/workspace.xml
+.idea/misc.xml
 
 # Ignore bundler config
 /.bundle
