@@ -1,5 +1,7 @@
 # Duff Rails Springboard
 
+## Overview
+
 This project can be used as a starting point for your own Rails projects.
 
 It's based on the excellent [*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
@@ -16,19 +18,17 @@ In particular, this project includes:
 - ability for users to change their name/email address/passwords
 - authentication with secure (encrypted) passwords
 - remebering signed-in users via cookies
-- authorization (to prevent unauthorized users from accessing user data)
+- authorization (to prevent a user from accessing another user's data for example)
 - SSL enabled by default
 - reasonable CSS styles based on Bootstrap
-- administrator privileges, allowing for deletion of users
-- Postgres database
+- administrator privileges, allowing for deletion of users for example
+- Postgres database by default, for easy deployment with Heroku free usage tier
 - lots of integration tests using RSpec
 - based on the latest and greatest version of Rails, version 3.2
-- standard REST architecture
+- standard REST and MVC architecture
 - Ready to deploy on Heroku
 
-To run the tests, use:
-
->bundle exec rspec spec/
+## TODO
 
 Here are some things that could be improved:
 
@@ -36,20 +36,37 @@ Here are some things that could be improved:
 - add Cucumber for Behavior Based Design
 - add seed data to create admin user
 
-To run locally:
->rail s
+## Requirements
+
+You'll need the following installed to develop locally:
+
+- ruby 1.9.2 (RVM works well)
+- rails (gem install rails)
+- Postgres (http://www.postgresql.org/download/macosx/)
+
+
+## Running and Deploying
+
+To run the tests, use:
+
+    bundle exec rspec spec/
+
+
+To run server locally:
+
+    rail s
 
 To deploy to Heroku:
 
->heroku create --stack cedar [appname]
-
->git push heroku master
-
->heroku run rake db:migrate
+    heroku create --stack cedar [appname]
+    git push heroku master
+    heroku run rake db:migrate
 
 To debug on Heroku:
->heroku logs
+
+    heroku logs
 
 and/or
 
->heroku run console
+    heroku run console
+
