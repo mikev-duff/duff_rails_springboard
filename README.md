@@ -11,6 +11,7 @@ The goal is to provide the basic facilities one might typically require when sta
 as the ability to create users, allow them to sign in/out, authentication, etc, based on a solid implementation.
 
 In particular, this project includes:
+
 - sign-in/sign-out/sign-up
 - ability for users to change their name/email address/passwords
 - authentication with secure (encrypted) passwords
@@ -30,6 +31,7 @@ To run the tests, use:
 >bundle exec rspec spec/
 
 Here are some things that could be improved:
+
 - add Guard/Spork for automated testing
 - add Cucumber for Behavior Based Design
 - add seed data to create admin user
