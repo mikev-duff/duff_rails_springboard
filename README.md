@@ -39,6 +39,7 @@ Here are some things that could be improved:
 ## Requirements
 
 You'll need the following installed to develop locally:
+
 - ruby 1.9.2 (RVM works well)
 - rails (gem install rails)
 - Postgres (http://www.postgresql.org/download/macosx/)
@@ -52,17 +53,17 @@ To run the tests, use:
 
 
 To run locally:
+
     >rail s
 
 To deploy to Heroku:
 
     >heroku create --stack cedar [appname]
-
     >git push heroku master
-
     >heroku run rake db:migrate
 
 To debug on Heroku:
+
     >heroku logs
 
 and/or
