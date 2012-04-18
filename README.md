@@ -35,3 +35,17 @@ Here are some things that could be improved:
 - add Guard/Spork for automated testing
 - add Cucumber for Behavior Based Design
 - add seed data to create admin user
+
+To run locally:
+>rail s
+
+To deploy to Heroku:
+
+>heroku create --stack cedar [appname]
+>git push heroku master
+>heroku run rake db:migrate
+
+To debug on Heroku:
+>heroku logs
+or
+>heroku run console
