@@ -49,24 +49,24 @@ You'll need the following installed to develop locally:
 
 To run the tests, use:
 
-    >bundle exec rspec spec/
+    bundle exec rspec spec/
 
 
-To run locally:
+To run server locally:
 
-    >rail s
+    rail s
 
 To deploy to Heroku:
 
-    >heroku create --stack cedar [appname]
-    >git push heroku master
-    >heroku run rake db:migrate
+    heroku create --stack cedar [appname]
+    git push heroku master
+    heroku run rake db:migrate
 
 To debug on Heroku:
 
-    >heroku logs
+    heroku logs
 
 and/or
 
-    >heroku run console
+    heroku run console
 
