@@ -1,0 +1,33 @@
+<h1>Listing timesheet_entries</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Project name</th>
+    <th>Task name</th>
+    <th>Performed on</th>
+    <th>Hours</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @timesheet_entries.each do |timesheet_entry| %>
+  <tr>
+    <td><%= timesheet_entry.user_id %></td>
+    <td><%= timesheet_entry.project_name %></td>
+    <td><%= timesheet_entry.task_name %></td>
+    <td><%= timesheet_entry.performed_on %></td>
+    <td><%= timesheet_entry.hours %></td>
+    <td><%= timesheet_entry.notes %></td>
+    <td><%= link_to 'Show', timesheet_entry %></td>
+    <td><%= link_to 'Edit', edit_timesheet_entry_path(timesheet_entry) %></td>
+    <td><%= link_to 'Destroy', timesheet_entry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Timesheet entry', new_timesheet_entry_path %>

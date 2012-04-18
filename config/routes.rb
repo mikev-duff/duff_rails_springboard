@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :timesheet_entries
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
