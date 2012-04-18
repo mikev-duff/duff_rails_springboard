@@ -11,23 +11,25 @@ The goal is to provide the basic facilities one might typically require when sta
 as the ability to create users, allow them to sign in/out, authentication, etc, based on a solid implementation.
 
 In particular, this project includes:
-  -sign-in/sign-out/sign-up
-  -ability for users to change their name/email address/passwords
-  -authentication with secure (encrypted) passwords
-  -remebering signed-in users via cookies
-  -authorization (to prevent unauthorized users from accessing user data)
-  -SSL enabled by default
-  -reasonable CSS styles based on Bootstrap
-  -administrator privileges, allowing for deletion of users
-  -Postgres database
-  -lots of integration tests using RSpec
-  -based on the latest and greatest version of Rails, version 3.2
-  -standard REST architecture
-  -Ready to deploy on Heroku
+- sign-in/sign-out/sign-up
+- ability for users to change their name/email address/passwords
+- authentication with secure (encrypted) passwords
+- remebering signed-in users via cookies
+- authorization (to prevent unauthorized users from accessing user data)
+- SSL enabled by default
+- reasonable CSS styles based on Bootstrap
+- administrator privileges, allowing for deletion of users
+- Postgres database
+- lots of integration tests using RSpec
+- based on the latest and greatest version of Rails, version 3.2
+- standard REST architecture
+- Ready to deploy on Heroku
 
-To run the tests, use: bundle exec rspec spec/
+To run the tests, use:
+
+>bundle exec rspec spec/
 
 Here are some things that could be improved:
-  -add Guard/Spork for automated testing
-  -add Cucumber for Behavior Based Design
-  -add seed data to create admin user
+- add Guard/Spork for automated testing
+- add Cucumber for Behavior Based Design
+- add seed data to create admin user
