@@ -127,10 +127,10 @@ describe User do
 
     before { @user.save }
     let!(:older_timesheet_entry) do
-      FactoryGirl.create(:timesheet_entry, user: @user, created_at: 1.day.ago)
+      FactoryGirl.create(:timesheet_entry, user: @user, hours:1, project_name: "Duff", created_at: 1.day.ago)
     end
     let!(:newer_timesheet_entry) do
-      FactoryGirl.create(:timesheet_entry, user: @user, created_at: 1.hour.ago)
+      FactoryGirl.create(:timesheet_entry, user: @user, hours:1, project_name: "Duff", created_at: 1.hour.ago)
     end
 
     it "should have the right microposts in the right order" do
