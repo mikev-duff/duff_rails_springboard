@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @timesheet_entries = @user.timesheet_entries.paginate(page: params[:page])
   end
 
   def new

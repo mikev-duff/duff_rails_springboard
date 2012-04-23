@@ -8,4 +8,13 @@
             </h1>
         </section>
     </aside>
+    <div class="span8">
+        <% if @user.timesheet_entries.any? %>
+            <h3>Timesheet Entries (<%= @user.timesheet_entries.count %>)</h3>
+            <ol class="timesheet_entries">
+                <%= render @timesheet_entries %>
+            </ol>
+            <%= will_paginate @timesheet_entries %>
+        <% end %>
+    </div>
 </div>
