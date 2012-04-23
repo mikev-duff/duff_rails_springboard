@@ -48,9 +48,22 @@ class UsersController < ApplicationController
   private
 
   def signed_in_user
+
+#    respond_to do |format|
+#      format.html {
+#        unless signed_in?
+#          store_location
+#          redirect_to signin_path, notice: "Please sign in."
+#        end
+#      }
+#      format.json { render :nothing => true, :status => :unauthorized }
+#    end
+
     unless signed_in?
+     #render :nothing => true, :status => :unauthorized
       store_location
       redirect_to signin_path, notice: "Please sign in."
+
     end
   end
 

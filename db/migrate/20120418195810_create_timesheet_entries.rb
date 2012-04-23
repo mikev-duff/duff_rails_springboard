@@ -10,5 +10,6 @@ class CreateTimesheetEntries < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :timesheet_entries, [:user_id, :created_at]
   end
 end

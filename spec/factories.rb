@@ -8,5 +8,12 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
   end
+
+  factory :timesheet_entry do
+    project_name "Duff"
+    user
+  end
+
 end

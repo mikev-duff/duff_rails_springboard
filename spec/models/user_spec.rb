@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:timesheet_entries) }
 
   it { should be_valid }
 
@@ -120,6 +121,30 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "timesheet_entry associations" do
+
+    before { @user.save }
+    let!(:older_timesheet_entry) do
+      FactoryGirl.create(:timesheet_entry, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_timesheet_entry) do
+      FactoryGirl.create(:timesheet_entry, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right microposts in the right order" do
+      @user.timesheet_entries.should == [newer_timesheet_entry, older_timesheet_entry]
+    end
+
+    it "should destroy associated timesheet_entries" do
+      timesheet_entries = @user.timesheet_entries
+      @user.destroy
+      timesheet_entries.each do |timesheet_entry|
+        TimesheetEntry.find_by_id(timesheet_entry.id).should be_nil
+      end
+    end
+
   end
 
 end

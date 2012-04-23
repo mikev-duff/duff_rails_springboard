@@ -1,4 +1,8 @@
 class TimesheetEntriesController < ApplicationController
+
+#  before_filter :correct_user,   only: [:edit, :update]
+#  before_filter :admin_user,     only: [:index, :edit, :update, :destroy]
+
   # GET /timesheet_entries
   # GET /timesheet_entries.json
   def index
@@ -80,4 +84,13 @@ class TimesheetEntriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def correct_user
+    @user = User.find(params[:id])
+    render :status => :unauthorized  unless current_user?(@user)
+  end
+
+
 end
