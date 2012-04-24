@@ -3,6 +3,18 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
+  #shortcut for getting all timesheets for this user only
+  def timesheets
+    @user = User.find(params[:id])
+    @timesheet_entries = @user.timesheet_entries
+
+    respond_to do |format|
+      format.html { render @timesheet_entries }  #todo: add view
+      format.json { render json: @timesheet_entries }
+    end
+
+  end
+
   def show
     @user = User.find(params[:id])
     @timesheet_entries = @user.timesheet_entries.paginate(page: params[:page])

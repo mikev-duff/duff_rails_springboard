@@ -3,10 +3,21 @@ class TimesheetEntriesController < ApplicationController
 #  before_filter :correct_user,   only: [:edit, :update]
 #  before_filter :admin_user,     only: [:index, :edit, :update, :destroy]
 
+# GET /timesheets
+# GET /timesheets.json
+  def all
+    @timesheet_entries = TimesheetEntry.all
+
+    respond_to do |format|
+      format.html { render json: @timesheet_entries }
+      format.json { render json: @timesheet_entries }
+    end
+  end
+
   # GET /timesheet_entries
   # GET /timesheet_entries.json
   def index
-    @timesheet_entries = TimesheetEntry.all
+    @timesheet_entries = TimesheetEntry.find_all_by_user_id(current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +56,7 @@ class TimesheetEntriesController < ApplicationController
   # POST /timesheet_entries.json
   def create
     @timesheet_entry = TimesheetEntry.new(params[:timesheet_entry])
+    @timesheet_entry.user_id=current_user.id
 
     respond_to do |format|
       if @timesheet_entry.save
