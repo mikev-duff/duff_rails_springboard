@@ -2,6 +2,7 @@ class TimesheetEntriesController < ApplicationController
 
 #  before_filter :correct_user,   only: [:edit, :update]
 #  before_filter :admin_user,     only: [:index, :edit, :update, :destroy]
+before_filter :check_user
 
 # GET /timesheets
 # GET /timesheets.json
@@ -104,5 +105,10 @@ class TimesheetEntriesController < ApplicationController
     render :status => :unauthorized  unless current_user?(@user)
   end
 
+  def check_user
+    if check_http_basic_auth == false
+      render :nothing => true, :status => :unauthorized
+    end
+  end
 
 end

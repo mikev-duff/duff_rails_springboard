@@ -43,6 +43,23 @@ module SessionsHelper
     User.find_by_remember_token(remember_token) unless remember_token.nil?
   end
 
+  def check_http_basic_auth
+    auth = request.authorization
+    if auth == nil
+      #not using basic auth
+      return true
+    end
+    username, password = ::Base64.decode64(request.authorization.split(' ', 2).last || '').split(/:/, 2)
+
+    logger.debug "#{username}, #{password}"
+    user = User.find_by_email(username)
+    if user && user.authenticate(password)
+      logger.debug "authenticated!!"
+      return true
+    end
+    return false
+  end
+
   def user_from_http_basic_auth
     auth = request.authorization
     if auth == nil
