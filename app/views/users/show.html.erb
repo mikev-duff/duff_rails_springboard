@@ -1,20 +1,25 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-    <aside class="span4">
-        <section>
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>
-            </h1>
-        </section>
-    </aside>
-    <div class="span8">
-        <% if @user.timesheet_entries.any? %>
-            <h3>Timesheet Entries (<%= @user.timesheet_entries.count %>)</h3>
-            <ol class="timesheet_entries">
-                <%= render @timesheet_entries %>
-            </ol>
-            <%= will_paginate @timesheet_entries %>
-        <% end %>
-    </div>
-</div>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Password digest:</b>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%= @user.admin %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

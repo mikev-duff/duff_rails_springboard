@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Project name:</b>
+  <%= @task.project_name %>
+</p>
+
+<p>
   <b>Task name:</b>
   <%= @task.task_name %>
 </p>
@@ -23,11 +28,6 @@
 <p>
   <b>User:</b>
   <%= @task.user %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @task.project %>
 </p>
 
 

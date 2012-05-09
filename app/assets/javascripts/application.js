@@ -11,6 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery.ui.all
 //= require jquery_ujs
-//= require bootstrap
-//= require_tree .
+//= require jquery.jeditable
+//= require jquery.dataTables
+//= require TableTools
+//= require ZeroClipboard

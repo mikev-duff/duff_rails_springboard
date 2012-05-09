@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
+before_filter :authenticate
+before_filter :fetch_task_for_user, :only => [:show, :edit, :update, :destroy]
+
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
 
+    @tasks = Task.find_all_by_user_id(@user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
@@ -13,7 +16,6 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = Task.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +26,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
+    @task = @user.tasks.build(params[:task])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +36,14 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+     @task = @user.tasks.build(params[:task])
+     project = Project.find_by_name(params[:task][:project_name])
+     @task.project = project
 
     respond_to do |format|
       if @task.save
@@ -56,12 +59,13 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task = Task.find(params[:id])
+     project = Project.find_by_name(params[:task][:project_name])
+     @task.project = project
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @task }
       else
         format.html { render action: "edit" }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -72,7 +76,6 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
 
     respond_to do |format|
@@ -80,4 +83,20 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  protected
+
+  def authenticate
+    authenticate_or_request_with_http_basic('Login') do |username, password|
+        @user = User.find_by_email(username)
+        @user && @user.authenticate(password)
+    end
+  end
+
+  def fetch_task_for_user
+    @task = Task.find(:first, :conditions => {:user_id => @user.id, :id => params[:id]})
+  end
+
+
 end
