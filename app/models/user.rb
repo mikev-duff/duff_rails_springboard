@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :timesheet_entries, dependent: :destroy
+  has_many :tasks
   before_save :create_remember_token
 
   validates :name, presence: true, length: { maximum: 50 }

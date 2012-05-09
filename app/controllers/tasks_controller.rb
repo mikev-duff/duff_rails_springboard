@@ -41,7 +41,11 @@ before_filter :fetch_task_for_user, :only => [:show, :edit, :update, :destroy]
   # POST /tasks
   # POST /tasks.json
   def create
-     @task = @user.tasks.build(params[:task])
+     @task = @user.tasks.new
+     @task.task_name = params[:task][:task_name]
+     @task.performed_on = params[:task][:performed_on]
+     @task.hours = params[:task][:hours]
+     @task.notes = params[:task][:notes]
      project = Project.find_by_name(params[:task][:project_name])
      @task.project = project
 
@@ -59,11 +63,15 @@ before_filter :fetch_task_for_user, :only => [:show, :edit, :update, :destroy]
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
+     @task.task_name = params[:task][:task_name]
+     @task.performed_on = params[:task][:performed_on]
+     @task.hours = params[:task][:hours]
+     @task.notes = params[:task][:notes]
      project = Project.find_by_name(params[:task][:project_name])
      @task.project = project
 
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render json: @task }
       else

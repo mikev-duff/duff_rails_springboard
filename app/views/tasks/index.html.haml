@@ -156,7 +156,7 @@
    - @tasks.each do |task|
     %tr{:id=>task.id}
      %td.hidden= task.id
-     %td.span2= task.project_name
+     %td.span2= task.project == nil ? '' : task.project.name
      %td.span2= task.task_name
      %td.span2= task.performed_on
      %td.span2= task.hours
