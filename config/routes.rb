@@ -1,4 +1,8 @@
 SampleApp::Application.routes.draw do
+  resources :tasks
+
+  resources :projects
+
   resources :timesheet_entries
 
   match '/timesheets' => 'timesheet_entries#all'
