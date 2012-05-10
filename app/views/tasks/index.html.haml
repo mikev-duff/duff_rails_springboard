@@ -109,7 +109,8 @@
 
     var i =  $('#taskTable tbody tr:first')[0];
     var lastRow = $('#taskTable').dataTable().fnGetData(i); //get data from row 0
-    if (lastRow == null) {
+    var copyLast = $('#copy_last').prop('checked');
+    if (lastRow == null || copyLast == false) {
         lastRow = new Array();
         lastRow[1] = "";
         lastRow[2] = "";
@@ -137,7 +138,10 @@
 
 
 .row
- %button.btn.btn-primary#addNewButton Add New Task
+ %form.form-inline
+  %button.btn.btn-primary#addNewButton Add New Task
+  %label.checkbox
+   %input{:type=>"checkbox", :id=>"copy_last", :checked=>true, :name=>"copy_last", :class=>"checkbox"}Copy Most Recent
 
 .row
 
