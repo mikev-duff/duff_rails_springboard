@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :admin_user
+
   # GET /projects
   # GET /projects.json
   def index
@@ -81,4 +83,10 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def admin_user
+    redirect_to(notadmin_path) unless current_user.admin?
+  end
+
+
 end

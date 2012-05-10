@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: dictionary_development
+  database: timecard_development
   pool: 5
   username: dictionary
   password: duff
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: dictionary_test
+  database: timecard_test
   pool: 5
   username: dictionary
   password: duff
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: dictionary_production
+  database: timecard_production
   pool: 5
   username: dictionary
   password: duff

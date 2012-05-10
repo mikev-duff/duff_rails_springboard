@@ -127,7 +127,7 @@
       %tbody
        - @tasks.each do |task|
         %tr{:id=>task.id}
-         %td.span2= task.user.name
+         %td.span2= task.user == nil ? "" :  task.user.name
          %td.span2= task.task_name
          %td.span2= task.performed_on
          %td.span2= task.notes
@@ -142,4 +142,4 @@
 
 
  .page-footer
-  = link_to 'Back', projects_path
+  = link_to 'Back to Projects', projects_path
