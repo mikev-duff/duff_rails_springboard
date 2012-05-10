@@ -96,9 +96,13 @@ before_filter :fetch_task_for_user, :only => [:show, :edit, :update, :destroy]
   protected
 
   def authenticate
-    authenticate_or_request_with_http_basic('Login') do |username, password|
-        @user = User.find_by_email(username)
-        @user && @user.authenticate(password)
+    if !current_user
+        authenticate_or_request_with_http_basic('Login') do |username, password|
+             @user = User.find_by_email(username)
+             @user && @user.authenticate(password)
+         end
+    else
+      @user = current_user
     end
   end
 

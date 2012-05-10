@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require bootstrap
 //= require jquery.jeditable
 //= require jquery.dataTables
 //= require TableTools
